@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermont Technical Centers Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a5f2e 0%, #2d8b47 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            height: calc(100vh - 120px);
+            gap: 0;
+        }
+
+        .sidebar {
+            background: white;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .stats-overview {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #bae6fd;
+        }
+
+        .stats-overview h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #0c4a6e;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #bae6fd;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #0c4a6e;
+            font-size: 14px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #1a5f2e;
+            font-size: 16px;
+        }
+
+        .center-list {
+            margin-top: 20px;
+        }
+
+        .center-list h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #1a5f2e;
+        }
+
+        .center-item {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .center-item:hover {
+            border-color: #2d8b47;
+            box-shadow: 0 2px 8px rgba(45, 139, 71, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .center-item.selected {
+            border-color: #1a5f2e;
+            background: #f0f9f0;
+            box-shadow: 0 2px 12px rgba(26, 95, 46, 0.3);
+        }
+
+        .center-name {
+            font-weight: 600;
+            color: #1a5f2e;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .center-location {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .center-programs {
+            font-size: 12px;
+            color: #555;
+            background: #f9fafb;
+            padding: 6px 8px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .popup-content {
+            min-width: 250px;
+        }
+
+        .popup-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a5f2e;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2d8b47;
+        }
+
+        .popup-location {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .popup-stats {
+            margin: 12px 0;
+        }
+
+        .popup-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .popup-stat-label {
+            color: #555;
+        }
+
+        .popup-stat-value {
+            font-weight: 600;
+            color: #1a5f2e;
+        }
+
+        .popup-programs {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .popup-programs h4 {
+            font-size: 13px;
+            color: #1a5f2e;
+            margin-bottom: 8px;
+        }
+
+        .program-tag {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0c4a6e;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin: 2px;
+        }
+
+        .filter-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .filter-section h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #1a5f2e;
+        }
+
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .filter-checkbox input {
+            margin-right: 8px;
+        }
+
+        .filter-checkbox label {
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .custom-marker {
+            background: #1a5f2e;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏫 Vermont Technical Centers Interactive Map</h1>
+        <p>Explore Vermont's 17 Career & Technical Education Centers</p>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="stats-overview">
+                <h2>Statewide Overview</h2>
+                <div class="stat-item">
+                    <span class="stat-label">Total Centers</span>
+                    <span class="stat-value">17</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Cost to Students</span>
+                    <span class="stat-value">FREE</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Graduation Rate</span>
+                    <span class="stat-value">93%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Graduate to Work/College</span>
+                    <span class="stat-value">90%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Students with College Credit</span>
+                    <span class="stat-value">37%</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Filter by Program Area</h3>
+                <div class="filter-checkbox">
+                    <input type="checkbox" id="filter-healthcare" checked>
+                    <label for="filter-healthcare">Healthcare</label>
+                </div>
+                <div class="filter-checkbox">
+                    <input type="checkbox" id="filter-trades" checked>
+                    <label for="filter-trades">Skilled Trades</label>
+                </div>
+                <div class="filter-checkbox">
+                    <input type="checkbox" id="filter-tech" checked>
+                    <label for="filter-tech">Technology/Digital Media</label>
+                </div>
+                <div class="filter-checkbox">
+                    <input type="checkbox" id="filter-culinary" checked>
+                    <label for="filter-culinary">Culinary Arts</label>
+                </div>
+                <div class="filter-checkbox">
+                    <input type="checkbox" id="filter-automotive" checked>
+                    <label for="filter-automotive">Automotive/Transportation</label>
+                </div>
+            </div>
+
+            <div class="center-list">
+                <h2>All Centers</h2>
+                <div id="centerListContainer"></div>
+            </div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
