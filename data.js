@@ -27,6 +27,8 @@ const vtTechCenters = [
             "Introduction to Healthcare"
         ],
         programCategories: ["automotive", "tech", "healthcare", "trades"],
+        schedule: "Half-day",
+        scheduleDetails: "AM session 9:35–11:47, PM session 12:09–2:21; students attend their sending high school the other half of the day",
         website: "https://btc.bsdvt.org/",
         notes: "Opened new $12M facility in 2025"
     },
@@ -54,6 +56,8 @@ const vtTechCenters = [
             "Culinary Arts"
         ],
         programCategories: ["trades", "tech", "healthcare", "automotive", "culinary"],
+        schedule: "Half-day",
+        scheduleDetails: "Students attend from sending schools across Chittenden County for half the school day",
         website: "https://www.ewsd.org/cte",
         notes: "Serves Chittenden County and surrounding areas"
     },
@@ -79,6 +83,8 @@ const vtTechCenters = [
             "Early Childhood Education"
         ],
         programCategories: ["trades", "healthcare", "automotive", "culinary", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "Morning session 8:30 AM–12:30 PM; students return to sending schools for the remainder of the day",
         website: "https://www.cvtcc.org/",
         notes: "Independent district since 2022; automotive program more competitive than UVM admission"
     },
@@ -103,6 +109,8 @@ const vtTechCenters = [
             "Business Technology"
         ],
         programCategories: ["trades", "automotive", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "AM block in first year, PM block in second year; PreTech offered daily to 10th graders",
         website: "https://chcc.fnesu.org/",
         notes: "Rural Franklin County location"
     },
@@ -128,6 +136,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare"],
+        schedule: "Half-day",
+        scheduleDetails: "Students split time between GMTCC and their home high school, taking math and English at the sending school",
         website: "https://www.gmtcc.org/",
         notes: "Serves Lamoille County"
     },
@@ -153,6 +163,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "First-year students attend the PM session; second-year students attend the AM session",
         website: "https://hactc.com/",
         notes: "Upper Valley region"
     },
@@ -176,6 +188,8 @@ const vtTechCenters = [
             "Culinary Arts"
         ],
         programCategories: ["healthcare", "trades", "tech", "culinary"],
+        schedule: "Full-day (integrated)",
+        scheduleDetails: "Town academy model — CTE programs are integrated into the regular school day since Lyndon Institute is the students' home school",
         website: "https://www.lyndoninstitute.org/",
         notes: "One of two private independent schools in VT receiving state/federal CTE funding"
     },
@@ -200,6 +214,8 @@ const vtTechCenters = [
             "Digital Media"
         ],
         programCategories: ["trades", "automotive", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "Most programs meet 2 hours/day over two years; Transportation and Natural Resources programs meet 4 hours/day for one year",
         website: "https://nc3.ncsuvt.org/",
         notes: "Northeast Kingdom location"
     },
@@ -225,6 +241,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "AM and PM sessions; students attend their sending high school the other half of the day",
         website: "https://www.maplerun.org/o/nwtc",
         notes: "Serves Franklin/Grand Isle Counties; all but two programs running waitlists"
     },
@@ -251,6 +269,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare"],
+        schedule: "Half-day",
+        scheduleDetails: "Students attend from Middlebury, Mount Abraham, and Vergennes Union high schools for half the school day",
         website: "https://www.hannafordcareercenter.org/",
         notes: "Serves Addison County"
     },
@@ -275,6 +295,8 @@ const vtTechCenters = [
             "Digital Design"
         ],
         programCategories: ["trades", "automotive", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "Students attend from area high schools in the Orange Southwest School District for half the school day",
         website: "https://rtcc.orangesouthwest.org/",
         notes: "Central Vermont location"
     },
@@ -300,6 +322,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "AM and PM sessions with transportation provided between home schools and the tech center",
         website: "https://rvtc.org/",
         notes: "Southeastern Vermont"
     },
@@ -324,6 +348,8 @@ const vtTechCenters = [
             "Business Technology"
         ],
         programCategories: ["trades", "automotive", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "Adjacent to Oxbow High School; students attend from five area sending schools for half the school day",
         website: "https://www.rbctc.org/",
         notes: "Serves Orange East region"
     },
@@ -349,6 +375,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare"],
+        schedule: "Half-day",
+        scheduleDetails: "Students enroll as juniors or seniors from area sending schools and attend for half the school day",
         website: "https://www.svcdc.org/",
         notes: "Southwestern Vermont"
     },
@@ -376,6 +404,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
+        schedule: "Full-day",
+        scheduleDetails: "Full-day center since 1996; programs run 9:15 AM–2:30 PM with its own academic instructors on-site",
         website: "https://staffordonline.org/",
         notes: "Second-largest CTE center in Vermont; 14 full-day programs; ~262 seat capacity with 380+ applicants"
     },
@@ -399,6 +429,8 @@ const vtTechCenters = [
             "Building Trades"
         ],
         programCategories: ["healthcare", "trades", "tech"],
+        schedule: "Full-day (integrated)",
+        scheduleDetails: "Town academy model — CTE programs are integrated into the regular school day since St. Johnsbury Academy is the students' home school",
         website: "https://www.stjacademy.org/",
         notes: "One of two private independent schools in VT receiving state/federal CTE funding"
     },
@@ -425,6 +457,8 @@ const vtTechCenters = [
             "Welding"
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
+        schedule: "Half-day",
+        scheduleDetails: "Block-schedule model; programs meet a minimum of 120 minutes/day, allowing students to retain a full schedule at their home school",
         website: "https://www.wrccvt.com/",
         notes: "Southeastern Vermont"
     }

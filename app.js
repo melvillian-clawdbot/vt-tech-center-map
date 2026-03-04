@@ -59,6 +59,10 @@ function createPopupContent(center) {
                     <span class="popup-stat-value">${center.programs.length}</span>
                 </div>
                 <div class="popup-stat">
+                    <span class="popup-stat-label">Schedule:</span>
+                    <span class="popup-stat-value">${center.schedule}</span>
+                </div>
+                <div class="popup-stat">
                     <span class="popup-stat-label">Governance:</span>
                     <span class="popup-stat-value">${center.governanceModel}</span>
                 </div>
@@ -69,6 +73,9 @@ function createPopupContent(center) {
             </div>
 
             <p style="margin: 8px 0 4px; font-size: 11px; color: #555;">
+                <strong>Schedule:</strong> ${center.scheduleDetails}
+            </p>
+            <p style="margin: 4px 0; font-size: 11px; color: #555;">
                 <strong>Governance:</strong> ${center.governanceDetails}
             </p>
 
@@ -123,6 +130,7 @@ function createSidebarList() {
             <div class="center-name">${center.name}</div>
             <div class="center-location">${center.location}</div>
             <div class="center-meta">
+                <span class="meta-tag schedule-tag">${center.schedule}</span>
                 <span class="meta-tag governance-tag">${center.governanceModel}</span>
                 <span class="meta-tag budget-tag">${formatBudget(center.annualOperatingBudget)}</span>
                 <span class="meta-tag students-tag">${center.estimatedStudents} students</span>
