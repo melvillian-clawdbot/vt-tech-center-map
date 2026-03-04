@@ -1,5 +1,7 @@
 // Vermont Technical Centers Data
 // Coordinates obtained via geocoding Vermont town centers
+// Governance and budget data sourced from VT Agency of Education, legislative reports, and news coverage (2023-2025)
+// Budget estimates based on FY23 median CTE expenditure of ~$25,184/FTE (VT AOE) and confirmed figures where available
 
 const vtTechCenters = [
     {
@@ -11,6 +13,9 @@ const vtTechCenters = [
         estimatedStudents: 450,
         annualCostPerStudent: 0, // Free for high school students
         graduationRate: 95,
+        governanceModel: "Host District",
+        governanceDetails: "Operated by Burlington School District; budget is part of the host district budget",
+        annualOperatingBudget: 6500000, // Estimated based on enrollment and statewide median per-FTE cost
         programs: [
             "Automotive Science & Technology",
             "Aviation & Aerospace",
@@ -34,6 +39,9 @@ const vtTechCenters = [
         estimatedStudents: 550,
         annualCostPerStudent: 0,
         graduationRate: 94,
+        governanceModel: "Host District",
+        governanceDetails: "Operated by Essex Westford School District; budget is part of the host district budget",
+        annualOperatingBudget: 8000000, // Estimated
         programs: [
             "Engineering & Industrial Design",
             "Mechatronics",
@@ -58,6 +66,9 @@ const vtTechCenters = [
         estimatedStudents: 380,
         annualCostPerStudent: 0,
         graduationRate: 92,
+        governanceModel: "Independent CTE District",
+        governanceDetails: "Became an independent district in 2022 with its own 10-member school board; budget voted on by residents of 18 sending towns",
+        annualOperatingBudget: 5470000, // Confirmed: $5.47M proposed FY2026-27 budget (Waterbury Roundabout)
         programs: [
             "Building Trades",
             "Welding & Metal Fabrication",
@@ -69,7 +80,7 @@ const vtTechCenters = [
         ],
         programCategories: ["trades", "healthcare", "automotive", "culinary", "tech"],
         website: "https://cvcc.education/",
-        notes: "Serves Central Vermont region"
+        notes: "Independent district since 2022; automotive program more competitive than UVM admission"
     },
     {
         id: 4,
@@ -80,6 +91,9 @@ const vtTechCenters = [
         estimatedStudents: 220,
         annualCostPerStudent: 0,
         graduationRate: 91,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with Enosburg Falls High School; governed by the host school district board",
+        annualOperatingBudget: 3200000, // Estimated
         programs: [
             "Agriculture & Natural Resources",
             "Automotive Technology",
@@ -101,6 +115,9 @@ const vtTechCenters = [
         estimatedStudents: 280,
         annualCostPerStudent: 0,
         graduationRate: 93,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with Lamoille Union High School; governed by the Lamoille South Supervisory Union",
+        annualOperatingBudget: 4100000, // Estimated
         programs: [
             "Agriculture",
             "Automotive Technology",
@@ -123,6 +140,9 @@ const vtTechCenters = [
         estimatedStudents: 340,
         annualCostPerStudent: 0,
         graduationRate: 94,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with Hartford High School; governed by the Hartford School District board",
+        annualOperatingBudget: 4900000, // Estimated
         programs: [
             "Advanced Manufacturing",
             "Automotive Technology",
@@ -138,13 +158,16 @@ const vtTechCenters = [
     },
     {
         id: 7,
-        name: "Lyndon Institute Adult CTE",
+        name: "Lyndon Institute CTE",
         location: "Lyndon Center",
         coordinates: [44.5358, -72.0089],
         town: "Lyndon",
         estimatedStudents: 190,
         annualCostPerStudent: 0,
         graduationRate: 90,
+        governanceModel: "Independent School",
+        governanceDetails: "Private independent school receiving state and federal CTE funding; CTE educators must be state-licensed",
+        annualOperatingBudget: 2800000, // Estimated (CTE portion only)
         programs: [
             "Healthcare",
             "Welding",
@@ -154,7 +177,7 @@ const vtTechCenters = [
         ],
         programCategories: ["healthcare", "trades", "tech", "culinary"],
         website: "https://www.lyndoninstitute.org/",
-        notes: "Independent school with CTE programs"
+        notes: "One of two private independent schools in VT receiving state/federal CTE funding"
     },
     {
         id: 8,
@@ -165,6 +188,9 @@ const vtTechCenters = [
         estimatedStudents: 260,
         annualCostPerStudent: 0,
         graduationRate: 89,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with North Country Union High School; governed by the host district board",
+        annualOperatingBudget: 3800000, // Estimated
         programs: [
             "Agriculture",
             "Automotive Technology",
@@ -186,6 +212,9 @@ const vtTechCenters = [
         estimatedStudents: 400,
         annualCostPerStudent: 0,
         graduationRate: 93,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with BFA St. Albans; governed by the Franklin Northeast Supervisory Union",
+        annualOperatingBudget: 5800000, // Estimated
         programs: [
             "Agriculture & Natural Resources",
             "Automotive Technology",
@@ -197,7 +226,7 @@ const vtTechCenters = [
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
         website: "https://www.nwctc.org/",
-        notes: "Serves Franklin/Grand Isle Counties"
+        notes: "Serves Franklin/Grand Isle Counties; all but two programs running waitlists"
     },
     {
         id: 10,
@@ -208,6 +237,9 @@ const vtTechCenters = [
         estimatedStudents: 310,
         annualCostPerStudent: 0,
         graduationRate: 95,
+        governanceModel: "Independent CTE District",
+        governanceDetails: "Independent CTE district with its own school board; presents a separate budget to voters in Addison County",
+        annualOperatingBudget: 4500000, // Estimated
         programs: [
             "Agriculture",
             "Automotive Technology",
@@ -231,6 +263,9 @@ const vtTechCenters = [
         estimatedStudents: 240,
         annualCostPerStudent: 0,
         graduationRate: 91,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with Randolph Union High School; governed by Orange Southwest Unified School District",
+        annualOperatingBudget: 3500000, // Estimated
         programs: [
             "Agriculture",
             "Automotive Technology",
@@ -252,6 +287,9 @@ const vtTechCenters = [
         estimatedStudents: 290,
         annualCostPerStudent: 0,
         graduationRate: 90,
+        governanceModel: "Independent CTE District",
+        governanceDetails: "Independent CTE district with its own school board; presents a separate budget to voters; offers pre-tech programs to 9th and 10th graders",
+        annualOperatingBudget: 4200000, // Estimated
         programs: [
             "Advanced Manufacturing",
             "Automotive Technology",
@@ -274,6 +312,9 @@ const vtTechCenters = [
         estimatedStudents: 180,
         annualCostPerStudent: 0,
         graduationRate: 92,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with Oxbow High School; governed by the Orange East Supervisory Union",
+        annualOperatingBudget: 2600000, // Estimated
         programs: [
             "Agriculture",
             "Automotive Technology",
@@ -288,13 +329,16 @@ const vtTechCenters = [
     },
     {
         id: 14,
-        name: "Southwest Tech",
+        name: "Southwest Vermont Career Development Center",
         location: "Bennington",
         coordinates: [42.8781, -73.1968],
         town: "Bennington",
         estimatedStudents: 320,
         annualCostPerStudent: 0,
         graduationRate: 91,
+        governanceModel: "Independent CTE District",
+        governanceDetails: "Independent CTE district with its own school board; presents a separate budget to voters in the Bennington region",
+        annualOperatingBudget: 4600000, // Estimated
         programs: [
             "Advanced Manufacturing",
             "Automotive Technology",
@@ -317,6 +361,9 @@ const vtTechCenters = [
         estimatedStudents: 480,
         annualCostPerStudent: 0,
         graduationRate: 93,
+        governanceModel: "Host District",
+        governanceDetails: "Adjacent to Rutland High School; governed by the Rutland City School District; full-day center with its own academic instructors",
+        annualOperatingBudget: 7000000, // Estimated
         programs: [
             "Advanced Manufacturing",
             "Automotive Technology",
@@ -330,17 +377,20 @@ const vtTechCenters = [
         ],
         programCategories: ["trades", "automotive", "culinary", "healthcare", "tech"],
         website: "https://www.rutlandcte.org/",
-        notes: "Largest city in Western Vermont"
+        notes: "Second-largest CTE center in Vermont; 14 full-day programs; ~262 seat capacity with 380+ applicants"
     },
     {
         id: 16,
-        name: "St. Johnsbury Academy Adult Education",
+        name: "St. Johnsbury Academy CTE",
         location: "St. Johnsbury",
         coordinates: [44.4192, -72.0151],
         town: "St. Johnsbury",
         estimatedStudents: 200,
         annualCostPerStudent: 0,
         graduationRate: 91,
+        governanceModel: "Independent School",
+        governanceDetails: "Private independent school receiving state and federal CTE funding; CTE educators must be state-licensed",
+        annualOperatingBudget: 2900000, // Estimated (CTE portion only)
         programs: [
             "Healthcare",
             "Welding",
@@ -350,7 +400,7 @@ const vtTechCenters = [
         ],
         programCategories: ["healthcare", "trades", "tech"],
         website: "https://www.stjacademy.org/",
-        notes: "Independent school in NEK"
+        notes: "One of two private independent schools in VT receiving state/federal CTE funding"
     },
     {
         id: 17,
@@ -361,6 +411,9 @@ const vtTechCenters = [
         estimatedStudents: 360,
         annualCostPerStudent: 0,
         graduationRate: 94,
+        governanceModel: "Host District",
+        governanceDetails: "Co-located with Brattleboro Union High School; governed by Windham Southeast Supervisory Union",
+        annualOperatingBudget: 5200000, // Estimated
         programs: [
             "Agriculture",
             "Automotive Technology",
@@ -382,11 +435,13 @@ const totalStudents = vtTechCenters.reduce((sum, center) => sum + center.estimat
 const avgGraduationRate = Math.round(
     vtTechCenters.reduce((sum, center) => sum + center.graduationRate, 0) / vtTechCenters.length
 );
+const totalOperatingBudget = vtTechCenters.reduce((sum, center) => sum + center.annualOperatingBudget, 0);
 
 // Export for use in app
 window.vtTechCenters = vtTechCenters;
 window.vtStats = {
     totalCenters: vtTechCenters.length,
     totalStudents: totalStudents,
-    avgGraduationRate: avgGraduationRate
+    avgGraduationRate: avgGraduationRate,
+    totalOperatingBudget: totalOperatingBudget
 };

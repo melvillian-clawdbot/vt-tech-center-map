@@ -22,6 +22,14 @@ function createCustomIcon() {
     });
 }
 
+// Format currency for display
+function formatBudget(amount) {
+    if (amount >= 1000000) {
+        return '$' + (amount / 1000000).toFixed(1) + 'M';
+    }
+    return '$' + amount.toLocaleString();
+}
+
 // Create popup content for a center
 function createPopupContent(center) {
     const programTags = center.programs.map(p =>
@@ -50,7 +58,19 @@ function createPopupContent(center) {
                     <span class="popup-stat-label">Programs Offered:</span>
                     <span class="popup-stat-value">${center.programs.length}</span>
                 </div>
+                <div class="popup-stat">
+                    <span class="popup-stat-label">Governance:</span>
+                    <span class="popup-stat-value">${center.governanceModel}</span>
+                </div>
+                <div class="popup-stat">
+                    <span class="popup-stat-label">Est. Annual Budget:</span>
+                    <span class="popup-stat-value">${formatBudget(center.annualOperatingBudget)}</span>
+                </div>
             </div>
+
+            <p style="margin: 8px 0 4px; font-size: 11px; color: #555;">
+                <strong>Governance:</strong> ${center.governanceDetails}
+            </p>
 
             <div class="popup-programs">
                 <h4>Programs:</h4>
@@ -102,6 +122,11 @@ function createSidebarList() {
         item.innerHTML = `
             <div class="center-name">${center.name}</div>
             <div class="center-location">${center.location}</div>
+            <div class="center-meta">
+                <span class="meta-tag governance-tag">${center.governanceModel}</span>
+                <span class="meta-tag budget-tag">${formatBudget(center.annualOperatingBudget)}</span>
+                <span class="meta-tag students-tag">${center.estimatedStudents} students</span>
+            </div>
             <div class="center-programs">
                 <strong>${programCount} programs</strong> including ${topPrograms}${programCount > 3 ? ', and more' : ''}
             </div>
